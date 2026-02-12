@@ -1,5 +1,4 @@
 import 'package:daily_habit/core/consts/design.dart';
-import 'package:daily_habit/data/providers/stats_provider.dart';
 import 'package:flutter/material.dart';
 
 class ProgressChart extends StatelessWidget {
@@ -37,6 +36,7 @@ class ProgressChart extends StatelessWidget {
     required String label,
   }) {
     final barHeight = value * maxBarHeight;
+    final opacity = (0.5 + (value * 0.3)).clamp(0.0, 1.0);
 
     return Column(
       children: [
@@ -44,7 +44,7 @@ class ProgressChart extends StatelessWidget {
           width: 24,
           height: barHeight < 4 ? 4 : barHeight,
           decoration: BoxDecoration(
-            color: AppColors.green.withOpacity(0.5 + (value * 0.3)),
+            color: AppColors.green.withOpacity(opacity),
             borderRadius: BorderRadius.circular(4),
           ),
         ),

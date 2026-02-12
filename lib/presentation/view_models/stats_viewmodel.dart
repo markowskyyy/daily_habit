@@ -48,14 +48,20 @@ class StatsViewModel {
         : 1;
 
     return [
-      (stats.dailyCompletions[Weekday.monday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.tuesday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.wednesday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.thursday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.friday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.saturday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.sunday] ?? 0) / maxValue,
+      _safeDivide(stats.dailyCompletions[Weekday.monday] ?? 0, maxValue),
+      _safeDivide(stats.dailyCompletions[Weekday.tuesday] ?? 0, maxValue),
+      _safeDivide(stats.dailyCompletions[Weekday.wednesday] ?? 0, maxValue),
+      _safeDivide(stats.dailyCompletions[Weekday.thursday] ?? 0, maxValue),
+      _safeDivide(stats.dailyCompletions[Weekday.friday] ?? 0, maxValue),
+      _safeDivide(stats.dailyCompletions[Weekday.saturday] ?? 0, maxValue),
+      _safeDivide(stats.dailyCompletions[Weekday.sunday] ?? 0, maxValue),
     ];
+  }
+
+  double _safeDivide(int a, int b) {
+    if (b == 0) return 0.0;
+    final result = a / b;
+    return result.isNaN || result.isInfinite ? 0.0 : result;
   }
 
   List<String> get weeklyLabels {

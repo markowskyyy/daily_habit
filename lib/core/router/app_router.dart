@@ -1,6 +1,6 @@
-import 'package:daily_habit/presentation/home_page/pages/home_screen.dart';
-import 'package:daily_habit/presentation/pages/calendar_screen.dart';
-import 'package:daily_habit/presentation/pages/stats_screen.dart';
+import 'package:daily_habit/presentation/pages/home_page/home_screen.dart';
+import 'package:daily_habit/presentation/pages/calendart_page/calendar_screen.dart';
+import 'package:daily_habit/presentation/pages/stats_page/stats_screen.dart';
 import 'package:daily_habit/presentation/ui_kit/essential/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';

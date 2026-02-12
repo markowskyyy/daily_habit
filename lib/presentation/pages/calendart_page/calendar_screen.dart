@@ -1,5 +1,6 @@
 import 'package:daily_habit/core/consts/design.dart';
-import 'package:daily_habit/presentation/home_page/view_model/home_viewmodel.dart';
+import 'package:daily_habit/core/router/app_router.dart';
+import 'package:daily_habit/presentation/pages/home_page/view_model/home_viewmodel.dart';
 import 'package:daily_habit/presentation/ui_kit/frequent/calendar_grid.dart';
 import 'package:daily_habit/presentation/view_models/calendar_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -51,8 +52,14 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
                     completionCounts: monthlyCompletions,
                     selectedDate: vm.selectedDate,
                     onDaySelected: (date) {
-                      vm.selectDate(date);
-                      _navigateToHome();
+                      final now = DateTime.now();
+                      final today = DateTime(now.year, now.month, now.day);
+                      final selectedDay = DateTime(date.year, date.month, date.day);
+
+                      if (!selectedDay.isAfter(today)) {
+                        vm.selectDate(date);
+                        appRouter.goToHome(context);
+                      }
                     },
                   ),
                   const SizedBox(height: 24),
@@ -149,12 +156,5 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
         ),
       ],
     );
-  }
-
-  void _navigateToHome() {
-    // Переключаем на главный экран через bottom navigation bar
-    // Индекс 0 - Today
-    final shell = GoRouter.of(context).routerDelegate.currentConfiguration;
-    // Логика переключения будет в app_router.dart
   }
 }

@@ -1,7 +1,7 @@
 import 'package:daily_habit/data/providers/completion_provider.dart';
 import 'package:daily_habit/data/providers/habit_provider.dart';
 import 'package:daily_habit/domain/enums/habit_icon.dart';
-import 'package:daily_habit/presentation/home_page/state/home_state.dart';
+import 'package:daily_habit/presentation/pages/home_page/state/home_state.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 

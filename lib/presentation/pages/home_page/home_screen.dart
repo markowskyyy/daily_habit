@@ -1,11 +1,11 @@
 import 'package:daily_habit/core/consts/design.dart';
 import 'package:daily_habit/domain/entities/habit.dart';
-import 'package:daily_habit/presentation/home_page/view_model/home_viewmodel.dart';
-import 'package:daily_habit/presentation/home_page/widgets/create_habit_sheet.dart';
-import 'package:daily_habit/presentation/home_page/widgets/date_navigation_bar.dart';
-import 'package:daily_habit/presentation/home_page/widgets/delete_habit_dialog.dart';
-import 'package:daily_habit/presentation/home_page/widgets/habits_list.dart';
-import 'package:daily_habit/presentation/home_page/widgets/home_app_bar.dart';
+import 'package:daily_habit/presentation/pages/home_page/view_model/home_viewmodel.dart';
+import 'package:daily_habit/presentation/pages/home_page/widgets/create_habit_sheet.dart';
+import 'package:daily_habit/presentation/pages/home_page/widgets/date_navigation_bar.dart';
+import 'package:daily_habit/presentation/pages/home_page/widgets/delete_habit_dialog.dart';
+import 'package:daily_habit/presentation/pages/home_page/widgets/habits_list.dart';
+import 'package:daily_habit/presentation/pages/home_page/widgets/home_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
