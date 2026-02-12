@@ -127,7 +127,7 @@ class _SheetTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Text(
-      'New Habit',
+      'Новая привычка',
       style: AppTextStyles.screenTitle,
     );
   }
@@ -147,7 +147,7 @@ class _HabitNameField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('HABIT NAME', style: AppTextStyles.formLabel),
+        Text('Привычка', style: AppTextStyles.formLabel),
         const SizedBox(height: 8),
         TextFormField(
           controller: controller,
@@ -189,7 +189,7 @@ class _IconSelector extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('ICON', style: AppTextStyles.formLabel),
+        Text('Занятие', style: AppTextStyles.formLabel),
         const SizedBox(height: 12),
         Wrap(
           spacing: 12,
@@ -279,7 +279,7 @@ class _ColorSelector extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('ACCENT COLOR', style: AppTextStyles.formLabel),
+        Text('Выберите цвет', style: AppTextStyles.formLabel),
         const SizedBox(height: 12),
         Wrap(
           spacing: 12,
@@ -362,7 +362,7 @@ class _SheetActions extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            child: Text('Cancel', style: AppTextStyles.buttonLight),
+            child: Text('Отмена', style: AppTextStyles.buttonLight),
           ),
         ),
         const SizedBox(width: 12),
@@ -376,7 +376,7 @@ class _SheetActions extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            child: Text('Create Habit', style: AppTextStyles.buttonText),
+            child: Text('Создать привычку', style: AppTextStyles.buttonText),
           ),
         ),
       ],

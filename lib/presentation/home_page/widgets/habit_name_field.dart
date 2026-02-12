@@ -16,13 +16,13 @@ class HabitNameField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('HABIT NAME', style: AppTextStyles.formLabel),
+        Text('Название привычки', style: AppTextStyles.formLabel),
         const SizedBox(height: 8),
         TextFormField(
           controller: controller,
           style: AppTextStyles.formInput,
           decoration: InputDecoration(
-            hintText: 'e.g. Read 20 mins',
+            hintText: 'Например читать 20 минут',
             hintStyle: AppTextStyles.formHint,
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(12),

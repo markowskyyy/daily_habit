@@ -19,7 +19,7 @@ class ColorSelectorSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('ACCENT COLOR', style: AppTextStyles.formLabel),
+        Text('Выберите цвет', style: AppTextStyles.formLabel),
         const SizedBox(height: 16),
         ColorGrid(
           colors: colors,

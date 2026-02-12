@@ -16,15 +16,15 @@ class DeleteHabitDialog extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text('Delete Habit', style: AppTextStyles.screenTitle),
+      title: Text('Удалить привычку', style: AppTextStyles.screenTitle),
       content: Text(
-        'Are you sure you want to delete "${habit.name}"?',
+        'Вы действительно хотите удалить привычку "${habit.name}"?',
         style: AppTextStyles.bodyMedium,
       ),
       actions: [
         TextButton(
           onPressed: () => Navigator.pop(context),
-          child: Text('Cancel', style: AppTextStyles.buttonLight),
+          child: Text('Отмена', style: AppTextStyles.buttonLight),
         ),
         TextButton(
           onPressed: () {
@@ -32,7 +32,7 @@ class DeleteHabitDialog extends StatelessWidget {
             Navigator.pop(context);
           },
           child: Text(
-            'Delete',
+            'Удалить',
             style: AppTextStyles.buttonLight.copyWith(color: AppColors.red),
           ),
         ),

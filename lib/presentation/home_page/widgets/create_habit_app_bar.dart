@@ -18,7 +18,7 @@ class CreateHabitAppBar extends StatelessWidget implements PreferredSizeWidget {
         onPressed: () => Navigator.pop(context),
       ),
       title: Text(
-        'New Habit',
+        'Новая привычка',
         style: AppTextStyles.screenTitle,
       ),
     );

@@ -24,7 +24,7 @@ class SubmitButton extends StatelessWidget {
           ),
         ),
         child: Text(
-          'Create Habit',
+          'Создать привычку',
           style: AppTextStyles.buttonText,
         ),
       ),

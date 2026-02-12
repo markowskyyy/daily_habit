@@ -1,16 +1,14 @@
-// lib/presentation/home_page/home_screen.dart
-
+import 'package:daily_habit/core/consts/design.dart';
+import 'package:daily_habit/domain/entities/habit.dart';
+import 'package:daily_habit/presentation/home_page/view_model/home_viewmodel.dart';
+import 'package:daily_habit/presentation/home_page/widgets/create_habit_sheet.dart';
+import 'package:daily_habit/presentation/home_page/widgets/date_navigation_bar.dart';
+import 'package:daily_habit/presentation/home_page/widgets/delete_habit_dialog.dart';
+import 'package:daily_habit/presentation/home_page/widgets/habits_list.dart';
+import 'package:daily_habit/presentation/home_page/widgets/home_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../core/consts/design.dart';
-import '../../../domain/entities/habit.dart';
-import '../../ui_kit/ui_kit.dart';
-import '../view_model/home_viewmodel.dart';
-import '../widgets/home_app_bar.dart';
-import '../widgets/date_navigation_bar.dart';
-import '../widgets/habits_list.dart';
-import '../widgets/delete_habit_dialog.dart';
-import '../widgets/create_habit_sheet.dart';
+
 
 class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
@@ -28,14 +26,7 @@ class HomeScreen extends ConsumerWidget {
         showTodayButton: !state.isTodaySelected,
         onTodayPressed: notifier.selectToday,
       ),
-      body: state.habits.isEmpty
-          ? EmptyState(
-        title: 'No habits yet',
-        message: 'Create your first habit and start tracking your progress',
-        buttonText: 'Create Habit',
-        onButtonPressed: () => _showCreateHabitSheet(context, ref),
-      )
-          : Column(
+      body: Column(
         children: [
           DateNavigationBar(
             weekday: _getWeekdayShort(state.selectedDate.weekday),
@@ -104,19 +95,19 @@ class HomeScreen extends ConsumerWidget {
   String _getWeekdayShort(int weekday) {
     switch (weekday) {
       case DateTime.monday:
-        return 'Mon';
+        return 'Пон';
       case DateTime.tuesday:
-        return 'Tue';
+        return 'Вт';
       case DateTime.wednesday:
-        return 'Wed';
+        return 'Ср';
       case DateTime.thursday:
-        return 'Thu';
+        return 'Чт';
       case DateTime.friday:
-        return 'Fri';
+        return 'Пт';
       case DateTime.saturday:
-        return 'Sat';
+        return 'Суб';
       case DateTime.sunday:
-        return 'Sun';
+        return 'Вс';
       default:
         return '';
     }

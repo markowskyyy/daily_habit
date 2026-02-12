@@ -72,7 +72,7 @@ class WeeklyChart extends StatelessWidget {
         ? stats.dailyCompletions.values.reduce((a, b) => a > b ? a : b)
         : 1;
 
-    final weekdays = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    final weekdays = ['Пн', 'Вт', 'Ср', 'Чет', 'Пят', 'Суб', 'Вс'];
     final values = [
       (stats.dailyCompletions[Weekday.monday] ?? 0) / maxValue,
       (stats.dailyCompletions[Weekday.tuesday] ?? 0) / maxValue,

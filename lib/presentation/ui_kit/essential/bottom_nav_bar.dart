@@ -25,17 +25,17 @@ class AppBottomNavBar extends StatelessWidget {
         BottomNavigationBarItem(
           icon: Icon(Icons.today_outlined),
           activeIcon: Icon(Icons.today),
-          label: 'Today',
+          label: 'Привычки',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.calendar_month_outlined),
           activeIcon: Icon(Icons.calendar_month),
-          label: 'Month',
+          label: 'Календарь',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.bar_chart_outlined),
           activeIcon: Icon(Icons.bar_chart),
-          label: 'Stats',
+          label: 'Статистика',
         ),
       ],
     );

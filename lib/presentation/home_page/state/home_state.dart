@@ -41,7 +41,7 @@ class HomeState {
   }
 
   String get pageTitle {
-    return isTodaySelected ? 'My Day' : 'History';
+    return isTodaySelected ? 'Сегодня' : 'История';
   }
 
   bool canSelectNextDay() {

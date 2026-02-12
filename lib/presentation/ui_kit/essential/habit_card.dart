@@ -166,11 +166,11 @@ class HabitCard extends ConsumerWidget {
     final difference = now.difference(dateTime).inDays;
 
     if (difference == 0) {
-      return 'Today';
+      return 'Сегодня';
     } else if (difference == 1) {
-      return 'Yesterday';
+      return 'Вчера';
     } else {
-      return 'Created $difference days ago';
+      return 'Создано $difference дней назад';
     }
   }
 }

@@ -23,7 +23,7 @@ class IconSelectorSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text('ICON', style: AppTextStyles.formLabel),
+        Text('Занятие', style: AppTextStyles.formLabel),
         const SizedBox(height: 16),
         IconGrid(
           icons: icons,
