@@ -1,13 +1,9 @@
-
-
 import 'package:daily_habit/core/consts/design.dart';
-import 'package:daily_habit/domain/entities/habit.dart';
 import 'package:daily_habit/presentation/pages/stats_page/widgets/consistency_card.dart';
 import 'package:daily_habit/presentation/pages/stats_page/widgets/most_completed_card.dart';
 import 'package:daily_habit/presentation/pages/stats_page/widgets/stats_grid.dart';
 import 'package:daily_habit/presentation/pages/stats_page/widgets/streaks_card.dart';
 import 'package:daily_habit/presentation/pages/stats_page/widgets/weekly_chart_card.dart';
-import 'package:daily_habit/presentation/ui_kit/ui_kit.dart';
 import 'package:daily_habit/presentation/pages/home_page/view_model/home_viewmodel.dart';
 import 'package:daily_habit/presentation/view_models/stats_viewmodel.dart';
 import 'package:flutter/material.dart';

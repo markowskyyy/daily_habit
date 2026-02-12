@@ -2,7 +2,6 @@ import 'package:daily_habit/core/consts/design.dart';
 import 'package:daily_habit/domain/enums/habit_icon.dart';
 import 'package:flutter/material.dart';
 
-
 class CreateHabitSheet extends StatefulWidget {
   final List<HabitIcon> availableIcons;
   final List<String> availableColors;

@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:daily_habit/domain/entities/habit.dart';
 import 'package:daily_habit/domain/enums/habit_icon.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
