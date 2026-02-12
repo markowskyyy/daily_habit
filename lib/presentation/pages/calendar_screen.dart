@@ -1,4 +1,5 @@
 import 'package:daily_habit/core/consts/design.dart';
+import 'package:daily_habit/presentation/home_page/view_model/home_viewmodel.dart';
 import 'package:daily_habit/presentation/ui_kit/frequent/calendar_grid.dart';
 import 'package:daily_habit/presentation/view_models/calendar_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,6 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
   @override
   void initState() {
     super.initState();
-    // Инициализируем текущий месяц при создании
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(calendarViewModelProvider).setCurrentMonth(DateTime.now());
     });
@@ -26,7 +26,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
   Widget build(BuildContext context) {
     final vm = ref.watch(calendarViewModelProvider);
     final monthlyCompletions = vm.getMonthlyCompletions();
-    final selectedDate = vm.selectedDate;
+    final homeState = ref.watch(homeViewModelProvider);
 
     return Scaffold(
       backgroundColor: AppColors.background,
@@ -49,7 +49,7 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
                   CalendarGrid(
                     currentMonth: vm.currentMonth,
                     completionCounts: monthlyCompletions,
-                    selectedDate: selectedDate,
+                    selectedDate: vm.selectedDate,
                     onDaySelected: (date) {
                       vm.selectDate(date);
                       _navigateToHome();
@@ -113,9 +113,9 @@ class _CalendarScreenState extends ConsumerState<CalendarScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _buildLegendItem(AppColors.green, 'Completed'),
+          _buildLegendItem(AppColors.green, 'Выполнено'),
           const SizedBox(width: 24),
-          _buildLegendItem(AppColors.grey, 'No completions'),
+          _buildLegendItem(AppColors.grey, 'Не выполнено'),
         ],
       ),
     );

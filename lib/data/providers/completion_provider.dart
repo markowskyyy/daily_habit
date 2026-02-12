@@ -1,6 +1,7 @@
+import 'dart:convert';
 import 'package:daily_habit/domain/entities/habit_completion.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-
+import 'package:shared_preferences/shared_preferences.dart';
 
 final completionProvider = StateNotifierProvider<CompletionNotifier, List<HabitCompletion>>((ref) {
   return CompletionNotifier();
@@ -40,9 +41,29 @@ final isHabitCompletedForDateProvider = Provider.family<bool, ({String habitId, 
 });
 
 class CompletionNotifier extends StateNotifier<List<HabitCompletion>> {
-  CompletionNotifier() : super([]);
+  CompletionNotifier() : super([]) {
+    _loadCompletions();
+  }
 
-  void toggleCompletion(String habitId, DateTime date) {
+  static const String _storageKey = 'completions';
+
+  Future<void> _loadCompletions() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? completionsJson = prefs.getString(_storageKey);
+
+    if (completionsJson != null) {
+      final List<dynamic> decoded = json.decode(completionsJson);
+      state = decoded.map((item) => HabitCompletion.fromJson(item)).toList();
+    }
+  }
+
+  Future<void> _saveCompletions() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String encoded = json.encode(state.map((c) => c.toJson()).toList());
+    await prefs.setString(_storageKey, encoded);
+  }
+
+  void toggleCompletion(String habitId, DateTime date) async {
     final normalizedDate = DateTime(date.year, date.month, date.day);
 
     final existingIndex = state.indexWhere(
@@ -51,13 +72,11 @@ class CompletionNotifier extends StateNotifier<List<HabitCompletion>> {
     );
 
     if (existingIndex >= 0) {
-      // Удаляем если уже есть
       state = [
         ...state.sublist(0, existingIndex),
         ...state.sublist(existingIndex + 1),
       ];
     } else {
-      // Добавляем новое завершение
       state = [
         ...state,
         HabitCompletion(
@@ -66,9 +85,10 @@ class CompletionNotifier extends StateNotifier<List<HabitCompletion>> {
         ),
       ];
     }
+    await _saveCompletions();
   }
 
-  void completeHabit(String habitId, DateTime date) {
+  void completeHabit(String habitId, DateTime date) async {
     final normalizedDate = DateTime(date.year, date.month, date.day);
 
     final exists = state.any(
@@ -84,21 +104,27 @@ class CompletionNotifier extends StateNotifier<List<HabitCompletion>> {
           date: normalizedDate,
         ),
       ];
+      await _saveCompletions();
     }
   }
 
-  void uncompleteHabit(String habitId, DateTime date) {
+  void uncompleteHabit(String habitId, DateTime date) async {
     final normalizedDate = DateTime(date.year, date.month, date.day);
 
     state = state.where((completion) {
       return !(completion.habitId == habitId &&
           completion.normalizedDate == normalizedDate);
     }).toList();
+    await _saveCompletions();
+  }
+
+  void clearCompletionsForHabit(String habitId) async {
+    state = state.where((completion) => completion.habitId != habitId).toList();
+    await _saveCompletions();
   }
 
   List<HabitCompletion> getCompletionsForDate(DateTime date) {
     final normalizedDate = DateTime(date.year, date.month, date.day);
-
     return state.where((completion) {
       return completion.normalizedDate == normalizedDate;
     }).toList();
@@ -113,21 +139,14 @@ class CompletionNotifier extends StateNotifier<List<HabitCompletion>> {
 
   int getCompletionCountForDate(String habitId, DateTime date) {
     final normalizedDate = DateTime(date.year, date.month, date.day);
-
     return state.where((completion) {
       return completion.habitId == habitId &&
           completion.normalizedDate == normalizedDate;
     }).length;
   }
 
-  void clearAllCompletions() {
+  void clearAllCompletions() async {
     state = [];
+    await _saveCompletions();
   }
-
-
-
-  void clearCompletionsForHabit(String habitId) {
-    state = state.where((completion) => completion.habitId != habitId).toList();
-  }
-
 }

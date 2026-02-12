@@ -1,43 +1,42 @@
+import 'dart:convert';
+
 import 'package:daily_habit/domain/entities/habit.dart';
 import 'package:daily_habit/domain/enums/habit_icon.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 final habitProvider = StateNotifierProvider<HabitNotifier, List<Habit>>((ref) {
   return HabitNotifier();
 });
 
 class HabitNotifier extends StateNotifier<List<Habit>> {
-  HabitNotifier() : super(_initialHabits);
+  HabitNotifier() : super([]) {
+    _loadHabits();
+  }
 
-  static final List<Habit> _initialHabits = [
-    Habit(
-      id: '1',
-      name: 'Morning Yoga',
-      icon: HabitIcon.yoga,
-      accentColor: '#9C27B0', // purple
-      createdAt: DateTime.now(),
-    ),
-    Habit(
-      id: '2',
-      name: 'Read 20 mins',
-      icon: HabitIcon.book,
-      accentColor: '#29B6F6', // blue
-      createdAt: DateTime.now(),
-    ),
-    Habit(
-      id: '3',
-      name: 'Drink 2L Water',
-      icon: HabitIcon.water,
-      accentColor: '#66BB6A', // green
-      createdAt: DateTime.now(),
-    ),
-  ];
+  static const String _storageKey = 'habits';
+
+  Future<void> _loadHabits() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String? habitsJson = prefs.getString(_storageKey);
+
+    if (habitsJson != null) {
+      final List<dynamic> decoded = json.decode(habitsJson);
+      state = decoded.map((item) => Habit.fromJson(item)).toList();
+    }
+  }
+
+  Future<void> _saveHabits() async {
+    final prefs = await SharedPreferences.getInstance();
+    final String encoded = json.encode(state.map((h) => h.toJson()).toList());
+    await prefs.setString(_storageKey, encoded);
+  }
 
   void addHabit({
     required String name,
     required HabitIcon icon,
     required String accentColor,
-  }) {
+  }) async {
     final newHabit = Habit(
       id: DateTime.now().millisecondsSinceEpoch.toString(),
       name: name,
@@ -47,15 +46,23 @@ class HabitNotifier extends StateNotifier<List<Habit>> {
     );
 
     state = [...state, newHabit];
+    await _saveHabits();
   }
 
-  void deleteHabit(String id) {
+  void deleteHabit(String id) async {
     state = state.where((habit) => habit.id != id).toList();
+    await _saveHabits();
   }
 
-  void updateHabit(Habit updatedHabit) {
+  void updateHabit(Habit updatedHabit) async {
     state = state.map((habit) {
       return habit.id == updatedHabit.id ? updatedHabit : habit;
     }).toList();
+    await _saveHabits();
+  }
+
+  void clearAllHabits() async {
+    state = [];
+    await _saveHabits();
   }
 }

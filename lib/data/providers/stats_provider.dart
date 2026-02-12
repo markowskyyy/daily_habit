@@ -18,38 +18,38 @@ extension WeekdayExtension on Weekday {
   String get shortName {
     switch (this) {
       case Weekday.monday:
-        return 'Mon';
+        return 'Пон';
       case Weekday.tuesday:
-        return 'Tue';
+        return 'Вт';
       case Weekday.wednesday:
-        return 'Wed';
+        return 'Ср';
       case Weekday.thursday:
-        return 'Thu';
+        return 'Чт';
       case Weekday.friday:
-        return 'Fri';
+        return 'Пт';
       case Weekday.saturday:
-        return 'Sat';
+        return 'Сб';
       case Weekday.sunday:
-        return 'Sun';
+        return 'Вс';
     }
   }
 
   String get fullName {
     switch (this) {
       case Weekday.monday:
-        return 'Monday';
+        return 'Понедельник';
       case Weekday.tuesday:
-        return 'Tuesday';
+        return 'Вторник';
       case Weekday.wednesday:
-        return 'Wednesday';
+        return 'Среда';
       case Weekday.thursday:
-        return 'Thursday';
+        return 'Четверг';
       case Weekday.friday:
-        return 'Friday';
+        return 'Пятницу';
       case Weekday.saturday:
-        return 'Saturday';
+        return 'Суббота';
       case Weekday.sunday:
-        return 'Sunday';
+        return 'Воскресенье';
     }
   }
 }

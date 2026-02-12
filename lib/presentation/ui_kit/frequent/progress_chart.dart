@@ -57,35 +57,3 @@ class ProgressChart extends StatelessWidget {
     );
   }
 }
-
-class WeeklyChart extends StatelessWidget {
-  final WeeklyStats stats;
-
-  const WeeklyChart({
-    super.key,
-    required this.stats,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final maxValue = stats.dailyCompletions.values.isNotEmpty
-        ? stats.dailyCompletions.values.reduce((a, b) => a > b ? a : b)
-        : 1;
-
-    final weekdays = ['Пн', 'Вт', 'Ср', 'Чет', 'Пят', 'Суб', 'Вс'];
-    final values = [
-      (stats.dailyCompletions[Weekday.monday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.tuesday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.wednesday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.thursday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.friday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.saturday] ?? 0) / maxValue,
-      (stats.dailyCompletions[Weekday.sunday] ?? 0) / maxValue,
-    ];
-
-    return ProgressChart(
-      data: values,
-      labels: weekdays,
-    );
-  }
-}

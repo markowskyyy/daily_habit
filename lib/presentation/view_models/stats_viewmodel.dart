@@ -59,7 +59,7 @@ class StatsViewModel {
   }
 
   List<String> get weeklyLabels {
-    return ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    return ['Пн', 'Вт', 'Ср', 'Чет', 'Пят', 'Суб', 'Вс'];
   }
 
   // Streaks
@@ -87,7 +87,8 @@ class StatsViewModel {
   }
 
   String get activeStreaksFormatted {
-    return '$getActiveStreaksCount/${habits.length}';
+
+    return '${getActiveStreaksCount()}/${habits.length}';
   }
 
   // Most completed habits

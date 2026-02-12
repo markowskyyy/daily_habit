@@ -1,5 +1,3 @@
-
-
 import 'package:daily_habit/domain/entities/habit_completion.dart';
 import 'package:daily_habit/domain/enums/habit_icon.dart';
 
@@ -35,6 +33,26 @@ class Habit {
       accentColor: accentColor ?? this.accentColor,
       createdAt: createdAt ?? this.createdAt,
       completions: completions ?? this.completions,
+    );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      'id': id,
+      'name': name,
+      'icon': icon.index,
+      'accentColor': accentColor,
+      'createdAt': createdAt.toIso8601String(),
+    };
+  }
+
+  factory Habit.fromJson(Map<String, dynamic> json) {
+    return Habit(
+      id: json['id'],
+      name: json['name'],
+      icon: HabitIcon.values[json['icon']],
+      accentColor: json['accentColor'],
+      createdAt: DateTime.parse(json['createdAt']),
     );
   }
 

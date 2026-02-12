@@ -23,6 +23,22 @@ class HabitCompletion {
     );
   }
 
+  Map<String, dynamic> toJson() {
+    return {
+      'habitId': habitId,
+      'date': date.toIso8601String(),
+      'isCompleted': isCompleted,
+    };
+  }
+
+  factory HabitCompletion.fromJson(Map<String, dynamic> json) {
+    return HabitCompletion(
+      habitId: json['habitId'],
+      date: DateTime.parse(json['date']),
+      isCompleted: json['isCompleted'],
+    );
+  }
+
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||

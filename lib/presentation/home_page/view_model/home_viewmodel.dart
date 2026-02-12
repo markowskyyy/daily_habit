@@ -99,10 +99,10 @@ class HomeViewModel extends StateNotifier<HomeState> {
 
   String? validateHabitName(String? value) {
     if (value == null || value.trim().isEmpty) {
-      return 'Habit name is required';
+      return 'Укажите название привычки';
     }
     if (value.trim().length < 3) {
-      return 'Habit name must be at least 3 characters';
+      return 'Название привычки должно быть длиннее 3 символов';
     }
     final trimmedName = value.trim().toLowerCase();
     final exists = state.habits.any((habit) =>

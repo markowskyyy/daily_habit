@@ -79,7 +79,7 @@ class StatsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: 8),
           Text(
-            'WEEKLY CONSISTENCY',
+            'НЕДЕЛЬНЫЙ ПРОГРЕСС',
             style: AppTextStyles.statLabel,
           ),
         ],
@@ -105,7 +105,7 @@ class StatsScreen extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'This Week',
+            'Неделя',
             style: AppTextStyles.screenTitle,
           ),
           const SizedBox(height: 24),
@@ -134,11 +134,11 @@ class StatsScreen extends ConsumerWidget {
       ),
       child: Row(
         children: [
-          Expanded(child: _buildStatItem('Best Day', vm.bestDay)),
+          Expanded(child: _buildStatItem('Лучший день', vm.bestDay)),
           Container(height: 40, width: 1, color: AppColors.lightGrey),
-          Expanded(child: _buildStatItem('Total Check-ins', vm.totalCheckins.toString())),
+          Expanded(child: _buildStatItem('Общий счёт', vm.totalCheckins.toString())),
           Container(height: 40, width: 1, color: AppColors.lightGrey),
-          Expanded(child: _buildStatItem('Habits', vm.habitsCount.toString())),
+          Expanded(child: _buildStatItem('Привычки', vm.habitsCount.toString())),
         ],
       ),
     );
@@ -171,7 +171,7 @@ class StatsScreen extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Streaks', style: AppTextStyles.screenTitle),
+          Text('Достижения', style: AppTextStyles.screenTitle),
           const SizedBox(height: 16),
           Row(
             children: [
@@ -249,7 +249,7 @@ class StatsScreen extends ConsumerWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('Most Completed', style: AppTextStyles.screenTitle),
+          Text('Самые активные', style: AppTextStyles.screenTitle),
           const SizedBox(height: 16),
           ...mostCompleted.entries.map((entry) => _buildHabitRankItem(
             habit: entry.key,
