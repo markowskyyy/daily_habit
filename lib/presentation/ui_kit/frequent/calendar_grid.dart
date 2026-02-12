@@ -32,7 +32,7 @@ class CalendarGrid extends StatelessWidget {
   }
 
   Widget _buildWeekdayHeaders() {
-    const weekdays = ['В', 'П', 'В', 'С', 'Ч', 'П', 'С'];
+    const weekdays = ['П', 'В', 'С', 'Ч', 'П', 'С', 'В'];
 
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceAround,

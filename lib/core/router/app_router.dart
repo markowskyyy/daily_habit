@@ -1,6 +1,5 @@
 import 'package:daily_habit/presentation/home_page/pages/home_screen.dart';
 import 'package:daily_habit/presentation/pages/calendar_screen.dart';
-import 'package:daily_habit/presentation/home_page/pages/create_habit_screen.dart';
 import 'package:daily_habit/presentation/pages/stats_screen.dart';
 import 'package:daily_habit/presentation/ui_kit/essential/bottom_nav_bar.dart';
 import 'package:flutter/material.dart';
@@ -56,13 +55,13 @@ final appRouter = GoRouter(
         ),
       ],
     ),
-    GoRoute(
-      path: '/create-habit',
-      name: 'createHabit',
-      pageBuilder: (context, state) => MaterialPage(
-        child: const CreateHabitScreen(),
-      ),
-    ),
+    // GoRoute(
+    //   path: '/create-habit',
+    //   name: 'createHabit',
+    //   pageBuilder: (context, state) => MaterialPage(
+    //     child: const CreateHabitScreen(),
+    //   ),
+    // ),
   ],
 );
 

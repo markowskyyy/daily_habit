@@ -109,7 +109,7 @@ class HomeViewModel extends StateNotifier<HomeState> {
     habit.name.toLowerCase() == trimmedName
     );
     if (exists) {
-      return 'Habit with this name already exists';
+      return 'Привычка с таким именем уже существует';
     }
     return null;
   }

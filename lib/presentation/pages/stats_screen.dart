@@ -105,7 +105,7 @@ class StatsScreen extends ConsumerWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Неделя',
+            'Активность',
             style: AppTextStyles.screenTitle,
           ),
           const SizedBox(height: 24),

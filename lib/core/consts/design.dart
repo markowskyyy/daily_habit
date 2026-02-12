@@ -4,7 +4,7 @@ class AppColors {
   const AppColors._();
 
   // Базовые цвета
-  static const Color background = Color(0xFFFAF9F6); // Кремово-белый
+  static const Color background = Color(0xFFFAF9F6);
   static const Color white = Colors.white;
   static const Color black = Color(0xFF000000);
 
