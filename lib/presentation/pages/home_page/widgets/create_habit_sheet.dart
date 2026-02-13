@@ -375,7 +375,7 @@ class _SheetActions extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
               ),
             ),
-            child: Text('Создать привычку', style: AppTextStyles.buttonText),
+            child: Text('Создать', style: AppTextStyles.buttonText),
           ),
         ),
       ],
